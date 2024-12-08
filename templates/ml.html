@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Visualization</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #e0e0e0;
+            text-align: center;
+            margin: 20px;
+        }
+        img {
+            max-width: 90%;
+            margin: 10px 0;
+            border: 2px solid #76c7c0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Data Visualization</h1>
+    <div>
+        {% for graph in graphs %}
+            <img src="{{ graph }}" alt="Graph">
+        {% endfor %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,86 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="{% static 'images/icon.jpg' %}" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Details - AQI Index Monitor</title>
+<link rel="stylesheet" href="{% static 'base/css/project_summary.css' %}">
+    <link rel="stylesheet" href="{% static 'base/css/basicfile.css' %}">
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                includedLanguages: 'en,hi,bn,te,ta,ml,pa,mr,gu,ur,kn,or,as,ma,ne,sid,bo,sa,ckb,km,guw,mlt,sd,si',
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</head>
+<body>
+    <header>
+        <div class="company-info">
+            <div class="company-name">Hardware Express</div>
+            <div class="slogan">BUILD TO BREATH CLEAN</div>
+        </div>
+        <div id="google_translate_element"></div>
+        <div class="font-size-buttons">
+            <button onclick="setFontSize('small')">A-</button>
+            <button onclick="setFontSize('normal')">A</button>
+            <button onclick="setFontSize('large')">A+</button>
+            <button id="toggle-mode">Light Mode</button>
+            <button id="login-button">Login</button>
+        </div>
+    </header>
+    <nav>
+        <div class="leftcont">
+            <div class="box box1"><a href="{% url 'home' %}">Home</a></div>
+            <div class="box box2"><a href="{% url 'map' % %}">Map</a></div>
+            <div class="box box3"><a href="{% url 'algorithum' %}">Algorithum</a></div>
+            <div class="box box4"><a href="{% url 'project_summary' %}">Project Sumamary</a></div>
+            <div class="box box5"><a href="aboutus.html">About Us</a></div>
+        </div>
+        <div class="rightcont">
+            <div class="box box1"><a href="faq.html">FAQs</a></div>
+            <div class="box box2"><a href="support.html">Support</a></div>
+        </div>
+    </nav>
+    <main>
+        <div class="project-details-container">
+            <h2>About the Project</h2>
+            <p>The AQI Index Monitor is an innovative project aimed at providing real-time air quality data...</p>
+
+            <h2>Objectives</h2>
+            <ul>
+                <li>Provide accurate and real-time air quality data.</li>
+                <li>Increase public awareness about air pollution.</li>
+                <li>Help individuals make informed decisions...</li>
+            </ul>
+
+            <h2>Features</h2>
+            <ul>
+                <li>Real-time air quality monitoring.</li>
+                <li>Interactive and user-friendly mobile application.</li>
+            </ul>
+
+            <h2>Our Team</h2>
+            <div class="team">
+                <div class="team-member">
+                    <img src="{% static 'images/image_pranay.jpg' %}" alt="Pranay Wani">
+                    <h3>Pranay Wani</h3>
+                    <p>Chief Executive Officer</p>
+                    <p>Team Leader</p>
+                </div>
+                <!-- Repeat for other members -->
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 AQI Index Monitor. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="{% static 'js/darkmode.js' %}"></script>
+</body>
+</html>

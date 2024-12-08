@@ -1,0 +1,96 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="{% static 'icon.jpg' %}" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="{% static 'base/css/login.css' %}">
+    <link rel="stylesheet" href="{% static 'base/css/basicfile.css' %}">
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                includedLanguages: 'en,hi,bn,te,ta,ml,pa,mr,gu,ur,kn,or,as,ma,ne,sid,bo,sa,ckb,km,guw,mlt,sd,si',
+            }, 'google_translate_element');
+        }
+    </script>
+    <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</head>
+<body>
+    <header>
+        <div class="company-info">
+            <div class="company-name">Hardware Express</div>
+            <div class="slogan">BUILD TO BREATH CLEAN</div>
+        </div>
+        <div id="google_translate_element"></div>
+        <div class="font-size-buttons">
+            <button onclick="setFontSize('small')">A-</button>
+            <button onclick="setFontSize('normal')">A</button>
+            <button onclick="setFontSize('large')">A+</button>
+            <button id="toggle-mode">Light Mode</button>
+            <button id="login-button">Login</button>
+        </div>
+    </header>
+    <main>
+        <div class="login-container">
+            <h2>Login</h2>
+            <div class="form">
+                <input type="text" id="email" placeholder="Enter Email" required>
+                <input type="password" id="password" placeholder="Enter Password" required>
+                <button id="login-email">Login</button>
+                <button id="google-login">Login with Google</button>
+            </div>
+            <div id="error-message" style="color: red; margin-top: 10px;"></div>
+        </div>
+    </main>
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 AQI Index Monitor. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+        import { getAuth, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyCPVKX0xD12qUuZUsVMJML3ziYmM_zG27U",
+            authDomain: "hardware-c4141.firebaseapp.com",
+            projectId: "hardware-c4141",
+            storageBucket: "hardware-c4141.appspot.com",
+            messagingSenderId: "952737919097",
+            appId: "1:952737919097:web:4fc7c24e916a2106d5a4a8",
+            measurementId: "G-NSLYTPT3NC"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        document.getElementById('login-email').addEventListener('click', async () => {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            try {
+                const userCredential = await signInWithEmailAndPassword(auth, email, password);
+                alert("Login successful!");
+                window.location.href = "{% url 'home' %}";
+            } catch (error) {
+                document.getElementById('error-message').innerText = error.message;
+            }
+        });
+
+        document.getElementById('google-login').addEventListener('click', async () => {
+            const provider = new GoogleAuthProvider();
+            try {
+                const result = await signInWithPopup(auth, provider);
+                alert("Google Login successful!");
+                window.location.href = "{% url 'home' %}";
+            } catch (error) {
+                document.getElementById('error-message').innerText = error.message;
+            }
+        });
+    </script>
+</body>
+</html>
